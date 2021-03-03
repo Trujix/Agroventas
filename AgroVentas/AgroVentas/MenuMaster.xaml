@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgroVentas.MenuMaster"
+             Title="Master">
+    <StackLayout>
+        <ListView x:Name="MenuItemsListView"
+                  SeparatorVisibility="None"
+                  HasUnevenRows="true"
+                  ItemsSource="{Binding MenuItems}">
+            <ListView.Header>
+                <Grid>
+                    <Image Source="menufondo.jpg" HeightRequest="50" Aspect="AspectFill"/>
+                    <BoxView BackgroundColor="#00695c" Opacity="0.6"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <Label 
+                            x:Name="AgenteNombreMenu"
+                            Grid.Column="1" 
+                            Grid.Row="2" 
+                            Text="" 
+                            TextColor="White"
+                            Style="{DynamicResource SubtitleStyle}"/>
+                    </Grid>
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="15,15" HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="10">
+                            <Label Text="{Binding Icon}"
+                                   FontFamily="{StaticResource FontAwesome}"
+                                   FontSize="19"/>
+                            <Label VerticalOptions="FillAndExpand" 
+                                   VerticalTextAlignment="Center" 
+                                   Text="{Binding Title}" 
+                                   FontFamily="{StaticResource FontAwesome}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

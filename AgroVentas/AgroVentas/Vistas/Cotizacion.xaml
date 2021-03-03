@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:dotMorten.Xamarin.Forms;assembly=dotMorten.Xamarin.Forms.AutoSuggestBox"
+             x:Class="AgroVentas.Vistas.Cotizacion"
+             BarBackgroundColor="#39804F" BarTextColor="White">
+    <ContentPage Title="Generar">
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <StackLayout Padding="10,5,10,5"></StackLayout>
+                </Grid>
+                <Grid>
+                    <Frame BorderColor="Black" CornerRadius="20" Margin="5,5">
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Picker x:Name="CotizTipoClienteFormLista" Title="- Elige Tipo Cliente -" Grid.Row="0" Grid.Column="0" ItemDisplayBinding="{Binding TipoCliente}" SelectedItem="{Binding Id}" SelectedIndexChanged="CotizPrecio_TipoCliente"></Picker>
+                                <forms:AutoSuggestBox x:Name="CotizClienteBusq" Grid.Row="1" Grid.Column="0" PlaceholderText="- Elige Cliente -" TextChanged="CotizClienteBusq_TextChanged" SuggestionChosen="CotizClienteBusq_SuggestionChosen" />
+                                <Picker IsVisible="False" x:Name="CotizClienteFormLista" Title="- Elige Cliente -" Grid.Row="2" Grid.Column="0" ItemDisplayBinding="{Binding RazonSocial}" SelectedItem="{Binding Id}" SelectedIndexChanged="CotizElegir_Cliente"></Picker>
+                                <forms:AutoSuggestBox x:Name="CotizProductosBusq" Grid.Row="3" Grid.Column="0" PlaceholderText="- Elige Producto -" TextChanged="CotizProductosBusq_TextChanged" SuggestionChosen="CotizProductosBusq_SuggestionChosen" />
+                                <Picker IsVisible="False" x:Name="CotizProductoFormLista" Title="- Elige Producto -" Grid.Row="4" Grid.Column="0" ItemDisplayBinding="{Binding NombreProducto}" SelectedItem="{Binding Id}" SelectedIndexChanged="CotizElegir_Producto"></Picker>
+                                <Picker x:Name="CotizPresentFormLista" Title="- Elige Presentacion -" Grid.Row="5" Grid.Column="0" ItemDisplayBinding="{Binding NombrePresentacion}" SelectedItem="{Binding Id}" SelectedIndexChanged="CotizElegir_Present"></Picker>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                <Grid>
+                    <StackLayout x:Name="CotizPreciosClientes" Padding="10,10"></StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid x:Name="CotizListaProductos"></Grid>
+                    </StackLayout>
+                </Grid>
+                <BoxView x:Name="CotizLineaListaProductos" VerticalOptions="FillAndExpand" HeightRequest="1" Color="Black" IsVisible="False" />
+                <Grid x:Name="CotizTotalesListaProductos" IsVisible="False" Margin="5,10,10,5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="Cantidad: " />
+                    <Label x:Name="CotizCantidadProductos" Grid.Row="0" Grid.Column="1" FontSize="20" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="0" />
+                    <Label Grid.Row="1" Grid.Column="0" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="Subtotal: " />
+                    <Label x:Name="CotizSubTotal" Grid.Row="1" Grid.Column="1" FontSize="20" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="0" />
+                    <Label Grid.Row="2" Grid.Column="0" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="IEPS: " />
+                    <Label x:Name="CotizIEPS" Grid.Row="2" Grid.Column="1" FontSize="20" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="$ 0.00" />
+                    <Label Grid.Row="3" Grid.Column="0" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="Impuestos: " />
+                    <Label x:Name="CotizImpuestos" Grid.Row="3" Grid.Column="1" FontSize="20" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="$ 0.00" />
+                    <Label Grid.Row="4" Grid.Column="0" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="Descuento: " />
+                    <Label x:Name="CotizDescuento" Grid.Row="4" Grid.Column="1" FontSize="20" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="$ 0.00" />
+                    <Label Grid.Row="5" Grid.Column="0" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="Total: " />
+                    <Label x:Name="CotizTotalPrecio" Grid.Row="5" Grid.Column="1" FontSize="20" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="$ 0.00" />
+                    <Button Grid.Row="6" Grid.ColumnSpan="2" Text="&#xf0c7; Generar Cotización" BorderRadius="20" TextColor="White" BackgroundColor="#28a745" FontFamily="{StaticResource FontAwesome}" Margin="0,30,0,30" Clicked="Generar_Cotizacion" />
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage Title="Buscar">
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" Text="Cotizaciones Pendientes" Margin="0,5,0,0" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout x:Name="CotizTablaCliente" Padding="10,5,10,10"></StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,5,10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.ColumnSpan="2" FontSize="20" FontAttributes="Bold" Text="Consulta de Cotizaciones" />
+                            <forms:AutoSuggestBox x:Name="CotizBusqClienteLista" Grid.Row="1" Grid.ColumnSpan="2" PlaceholderText="- Elige Cliente -" TextChanged="CotizBusqClienteLista_TextChanged" SuggestionChosen="CotizBusqClienteLista_SuggestionChosen" />
+                            <Picker IsVisible="False" x:Name="CotizBuscClienteFormLista" Title="- Elige Cliente -" Grid.Row="2" Grid.ColumnSpan="2" ItemDisplayBinding="{Binding RazonSocial}" SelectedItem="{Binding Id}"></Picker>
+                            <DatePicker x:Name="CotizBusqFechaIniFormLista" Grid.Row="3" Grid.Column="0"></DatePicker>
+                            <DatePicker x:Name="CotizBusqFechaFinFormLista" Grid.Row="3" Grid.Column="1"></DatePicker>
+                            <Button Grid.Row="4" Grid.ColumnSpan="2" Text="&#xf15b; Consultar Cotizaciones" BorderRadius="20" TextColor="White" BackgroundColor="#343a40" FontFamily="{StaticResource FontAwesome}" Margin="0,30,0,30" Clicked="Cotizaciones_Online" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,5,10,10">
+                        <Grid x:Name="CotizOnlineClientes"></Grid>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+</TabbedPage>

@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgroVentas.Vistas.OrdenPedidos"
+             xmlns:forms="clr-namespace:dotMorten.Xamarin.Forms;assembly=dotMorten.Xamarin.Forms.AutoSuggestBox"
+             BarBackgroundColor="#39804F" BarTextColor="White">
+    <ContentPage x:Name="OPTabNueva" Title="Nueva">
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <StackLayout Padding="10,5,10,5"></StackLayout>
+                </Grid>
+                <Grid>
+                    <Frame BorderColor="Black" CornerRadius="20" Margin="5,5">
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Row="0" Text="&#xf067; Nueva Orden" BorderRadius="20" TextColor="White" BackgroundColor="#007bff" FontFamily="{StaticResource FontAwesome}" Grid.ColumnSpan="2" Clicked="Nueva_OrdenPedido" />
+                                <Label Grid.Row="1" Grid.Column="0" FontSize="20" FontAttributes="Bold" Text="N° Orden: " />
+                                <Label x:Name="OPNumeroOrden" Grid.Row="1" Grid.Column="1" Text="---" FontSize="20" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="#17a2b8" TextColor="White"></Label>
+                                <Picker x:Name="OPTipoDocumentoFormLista" Title="- Elige Tipo Documento -" Grid.Row="2" ItemDisplayBinding="{Binding NombreDocumento}" SelectedItem="{Binding Id}" Margin="0,10,0,10" Grid.ColumnSpan="2" ></Picker>
+                                <Picker x:Name="OPTipoClienteFormLista" Title="- Elige Tipo Cliente -" Grid.Row="3" ItemDisplayBinding="{Binding TipoCliente}" SelectedItem="{Binding Id}" Margin="0,10,0,10" Grid.ColumnSpan="2" ></Picker>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                <Grid>
+                    <Frame BorderColor="Black" CornerRadius="20" Margin="5,5">
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" Text="Info. de Cliente" />
+                            </Grid>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <forms:AutoSuggestBox x:Name="OPClientesBusq" Grid.Row="0" Grid.ColumnSpan="2" PlaceholderText="- Elige Cliente -" TextChanged="OPClientesBusq_TextChanged" SuggestionChosen="OPClientesBusq_SuggestionChosen" />
+                                <Picker IsVisible="False" x:Name="OPClienteFormLista" Title="- Elige Cliente -" Grid.Row="1" ItemDisplayBinding="{Binding RazonSocial}" SelectedItem="{Binding Id}" Margin="0,10,0,10" Grid.ColumnSpan="2" SelectedIndexChanged="OPElegir_Cliente" />
+                                <Picker x:Name="OPClienteCampoFormLista" Title="- Elige Campo -" Grid.Row="2" Grid.Column="0" ItemDisplayBinding="{Binding CampoCliente}" SelectedItem="{Binding Id}" Margin="0,10,0,10" SelectedIndexChanged="OPElegir_CampoCliente" />
+                                <Label x:Name="OPClienteUbicacion" Grid.Row="2" Grid.Column="1" Text="---" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                <Grid>
+                    <Frame BorderColor="Black" CornerRadius="20" Margin="5,5">
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" Text="Info. de Producto" />
+                            </Grid>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <forms:AutoSuggestBox x:Name="OPProductosBusq" Grid.Row="0" Grid.ColumnSpan="2" PlaceholderText="- Elige Producto -" TextChanged="OPProductosBusq_TextChanged" SuggestionChosen="OPProductosBusq_SuggestionChosen" />
+                                <Picker IsVisible="False" x:Name="OPProductosFormLista" Title="- Elige Producto -" Grid.Row="1" ItemDisplayBinding="{Binding NombreProducto}" SelectedItem="{Binding Id}" Margin="0,10,0,10" Grid.ColumnSpan="2" SelectedIndexChanged="OPProducto_Elegir" />
+                                <Picker x:Name="OPPresentProductoFormLista" Title="- Elige Presentacion -" Grid.Row="2" ItemDisplayBinding="{Binding NombrePresentacion}" SelectedItem="{Binding Id}" Margin="0,10,0,10" Grid.ColumnSpan="2" SelectedIndexChanged="OPElegir_Presentacion" />
+                                <Entry x:Name="OPCantProductoFormLista" Grid.Row="3" Grid.Column="0" Placeholder="Cantidad" PlaceholderColor="DarkGray" TextColor="#00695c" Keyboard="Numeric" />
+                                <Entry x:Name="OPPrecioProductoFormLista" Grid.Row="3" Grid.Column="1" Placeholder="Precio" PlaceholderColor="DarkGray" TextColor="#00695c" Keyboard="Numeric" />
+                                <Entry x:Name="OPDescuentoFormLista" Grid.Row="4" Grid.ColumnSpan="2" Placeholder="Descuento (En blanco NO aplica)" PlaceholderColor="DarkGray" TextColor="#00695c" Keyboard="Numeric" />
+                                <Button Grid.Row="5" Text="&#xf0c9; Agregar Producto" BorderRadius="20" TextColor="White" BackgroundColor="#17a2b8" FontFamily="{StaticResource FontAwesome}" Grid.ColumnSpan="2" Margin="0,10,0,10" Clicked="OPAgregar_Producto" />
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                <Grid>
+                    <Frame BorderColor="Black" CornerRadius="20" Margin="5,5">
+                        <StackLayout>
+                            <Grid Margin="0,5,0,20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" Text="Lista de Productos" />
+                            </Grid>
+                            <Grid x:Name="OPListaProductos"></Grid>
+                            <BoxView VerticalOptions="FillAndExpand" HeightRequest="1" Color="Black" IsVisible="True" />
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="Cantidad: " />
+                                <Label x:Name="OPCantidadProductos" Grid.Row="0" Grid.Column="1" FontSize="20" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="0" />
+                                <Label Grid.Row="1" Grid.Column="0" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="Subtotal: " />
+                                <Label x:Name="OPSubTotal" Grid.Row="1" Grid.Column="1" FontSize="20" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="0" />
+                                <Label Grid.Row="2" Grid.Column="0" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="IEPS: " />
+                                <Label x:Name="OPIEPS" Grid.Row="2" Grid.Column="1" FontSize="20" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="$ 0.00" />
+                                <Label Grid.Row="3" Grid.Column="0" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="Impuestos: " />
+                                <Label x:Name="OPImpuestos" Grid.Row="3" Grid.Column="1" FontSize="20" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="$ 0.00" />
+                                <Label Grid.Row="4" Grid.Column="0" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="Descuento: " />
+                                <Label x:Name="OPDescuento" Grid.Row="4" Grid.Column="1" FontSize="20" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="$ 0.00" />
+                                <Label Grid.Row="5" Grid.Column="0" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="Total: " />
+                                <Label x:Name="OPTotalPrecio" Grid.Row="5" Grid.Column="1" FontSize="20" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="$ 0.00" />
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                <Grid>
+                    <Frame BorderColor="Black" CornerRadius="20" Margin="5,5">
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" Text="Fecha de Entrega" />
+                            </Grid>
+                            <Grid Margin="0,5,0,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <DatePicker x:Name="OPFechaEntrega" />
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Row="0" Grid.Column="0" Text="&#xf0c7; Guardar Orden Pedido" BorderRadius="20" TextColor="White" BackgroundColor="#28a745" FontFamily="{StaticResource FontAwesome}" Margin="0,30,0,30" Clicked="Guardar_OrdenPedido" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage x:Name="OPTabLista" Title="Lista">
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" Text="Ordenes Pedido Nuevas" Margin="0,5,0,0" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout x:Name="OPNuevasLista" Padding="10,5,10,10"></StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" Text="Ordenes Pedido sin Imprimir" Margin="0,5,0,0" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout x:Name="OPPendientesLista" Padding="10,5,10,10"></StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage x:Name="OPTabConsulta" Title="Consulta">
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <StackLayout Padding="10,5,10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.ColumnSpan="2" FontSize="20" FontAttributes="Bold" Text="Consulta de Ordenes Pedido" />
+                            <forms:AutoSuggestBox x:Name="OPBusqClientesLista" Grid.Row="1" Grid.ColumnSpan="2" PlaceholderText="- Elige Cliente -" TextChanged="OPBusqClientesLista_TextChanged" SuggestionChosen="OPBusqClientesLista_SuggestionChosen" />
+                            <Picker IsVisible="False" x:Name="OPBuscClienteFormLista" Title="- Elige Cliente -" Grid.Row="2" Grid.ColumnSpan="2" ItemDisplayBinding="{Binding RazonSocial}" SelectedItem="{Binding Id}"></Picker>
+                            <DatePicker x:Name="OPBusqFechaIniFormLista" Grid.Row="3" Grid.Column="0"></DatePicker>
+                            <DatePicker x:Name="OPBusqFechaFinFormLista" Grid.Row="3" Grid.Column="1"></DatePicker>
+                            <Button Grid.Row="4" Grid.ColumnSpan="2" Text="&#xf15b; Consultar Ordenes Pedido" BorderRadius="20" TextColor="White" BackgroundColor="#343a40" FontFamily="{StaticResource FontAwesome}" Margin="0,30,0,30" Clicked="OrdenesPedido_Online" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,5,10,10">
+                        <Grid x:Name="OPOnlineClientes"></Grid>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+</TabbedPage>

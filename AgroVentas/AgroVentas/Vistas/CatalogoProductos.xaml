@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:dotMorten.Xamarin.Forms;assembly=dotMorten.Xamarin.Forms.AutoSuggestBox"
+             x:Class="AgroVentas.Vistas.CatalogoProductos">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.ColumnSpan="3" FontSize="20" FontAttributes="Bold" Text="Ajuste de Productos" />
+                            <forms:AutoSuggestBox x:Name="ProductoBusq" Grid.Row="1" Grid.ColumnSpan="3" PlaceholderText="- Seleccione Producto -" TextChanged="ProductoBusq_TextChanged" SuggestionChosen="ProductoBusq_SuggestionChosen" />
+                            <Picker IsVisible="False" x:Name="ProductoFormLista" Title="- Seleccione Producto -" Grid.Row="2" Grid.ColumnSpan="3" ItemDisplayBinding="{Binding NombreProducto}" SelectedItem="{Binding Id}" Margin="0,10,0,10" />
+                            <Button Grid.Row="3" Grid.Column="0" Text="&#xf067; Nuevo" BorderRadius="20" TextColor="White" BackgroundColor="#007bff" FontFamily="{StaticResource FontAwesome}" Clicked="Nuevo_Producto" />
+                            <Button Grid.Row="3" Grid.Column="1" Text="&#xf044; Editar" BorderRadius="20" TextColor="White" BackgroundColor="#ffc107" FontFamily="{StaticResource FontAwesome}" Clicked="Editar_Producto" />
+                            <Button Grid.Row="3" Grid.Column="2" Text="&#xf1f8; Borrar" BorderRadius="20" TextColor="White" BackgroundColor="#dc3545" FontFamily="{StaticResource FontAwesome}" Clicked="Borrar_Producto" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" Text="Ficha de Producto" Margin="0,5,0,0" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf2bb;" FontFamily="{StaticResource FontAwesome}" />
+                            <forms:AutoSuggestBox x:Name="ProductoNombre" Grid.Row="1" Grid.Column="1" PlaceholderText="Nombre Producto" PlaceholderTextColor="DarkGray" TextColor="#00695c" TextChanged="ProductoNombre_TextChanged" SuggestionChosen="ProductoNombre_SuggestionChosen" />
+                            <!-- <Entry x:Name="ProductoNombre" Grid.Row="1" Grid.Column="1" Placeholder="Nombre Producto" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" /> -->
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,20,10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" Text="Presentacion(es)" />
+                            <Button Grid.Row="0" Grid.Column="1" Text="&#xf1f8;" WidthRequest="40" HeightRequest="40" BorderRadius="20" TextColor="White" BackgroundColor="#dc3545" FontFamily="{StaticResource FontAwesome}" Clicked="Limpiar_PresentProducto" />
+                            <Button Grid.Row="0" Grid.Column="2" Text="&#xf055;" WidthRequest="40" HeightRequest="40" BorderRadius="20" TextColor="White" BackgroundColor="#6c757d" FontFamily="{StaticResource FontAwesome}" Clicked="Nuevo_PresentProducto" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid x:Name="PresentProductosAltaGrid"></Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Row="0" Grid.Column="0" Text="&#xf0c7; Guardar Producto" BorderRadius="20" TextColor="White" BackgroundColor="#28a745" FontFamily="{StaticResource FontAwesome}" Margin="0,30,0,30" Clicked="Guardar_Producto" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

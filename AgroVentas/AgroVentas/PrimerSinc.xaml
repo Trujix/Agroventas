@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgroVentas.PrimerSinc" 
+             BackgroundColor="#39804F">
+    <ContentPage.Content>
+        <StackLayout Padding="10,10">
+            <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" FontSize="100" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Text="&#xf021;" FontFamily="{StaticResource FontAwesome}" />
+                <Label Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Text="Se requiere conección a Internet para esta acción.&#10;Se ha detectado información previa sobre este usuario que es necesaria aplicar a este dispositivo. Presione el boton 'Sincronizar Dispositivo' para continuar." />
+                <Button Grid.Row="2" Grid.Column="0" Text="&#xf0c2; Sincronizar Dispositivo" BorderRadius="20" TextColor="White" BackgroundColor="#343a40" FontFamily="{StaticResource FontAwesome}" Clicked="Primer_SincronizarAPP"></Button>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

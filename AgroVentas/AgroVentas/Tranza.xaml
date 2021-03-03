@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgroVentas.Tranza">
+    <Grid>
+        <BoxView Color="#CC0000"></BoxView>
+        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" FontSize="100" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="#ffbb33" Text="&#xf071;" FontFamily="{StaticResource FontAwesome}" Margin="0,10,0,10" />
+            <StackLayout Grid.Row="1" Padding="30,20" BackgroundColor="Black">
+                <Label FontAttributes="Bold" HorizontalOptions="Center" Text="Atención!: Se ha detectado un problema al intentar iniciar sesión con este usuario. Las 2 posibles causas de este error son las siguientes:" TextColor="White"></Label>
+                <Label FontAttributes="Bold" HorizontalOptions="Center" Text="1 - El usuario con el que intenta ingresar, ya está siendo usado en otro dispositivo:&#10;&#10;Deberá 'Desactivar' el antiguo dispositivo en el menú 'Configuracion' en la pestaña 'Datos'; si ya no posee el antiguo dispositivo y no puede realizar esta recomendación, o su problema es distinto, comuniquese con el administrador de la aplicación.&#10;&#10;2 - Está intentando ingresar con un usuario CLANDESTINO o NO VÁLIDO:&#10;&#10;Debe saber que por la ilegitimidad de la acción y por medidas de seguridad, dicho usuario con el que intentó acceder ha sido ELIMINADO de nuestros servicios.&#10;&#10;Si su problema es ajeno a cualquiera de estos 2 apartados, le recomendamos ponerse en contacto con el administrador de la aplicación." TextColor="White"></Label>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

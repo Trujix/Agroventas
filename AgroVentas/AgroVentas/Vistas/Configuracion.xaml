@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+            x:Class="AgroVentas.Vistas.Configuracion" 
+            BarBackgroundColor="#39804F" BarTextColor="White">
+    <ContentPage x:Name="ConfigDatosTab" Title="Datos" Icon="tab_confdatosicono.png">
+        <ContentPage.Content>
+            <ScrollView>
+                <StackLayout>
+                    <Grid>
+                        <StackLayout Padding="10,10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" Text="Sincronización Automática" Margin="0,25,0,15" />
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                    <Grid>
+                        <StackLayout Padding="10,10">
+                            <Label Text="Nota: Le recomendamos ampliamente mantener esta opción habilitada. De lo contrario, tendría que asegurarse que actualize periodicamente la información nueva con el servidor; ya que es posible que dicha información se pierda, ya sea si, su dispositivo se dañe, extravíe o, desinstale la aplicación."></Label>
+                        </StackLayout>
+                    </Grid>
+                    <Grid>
+                        <StackLayout Padding="10,10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" Text="Sincronizar automáticamente con el servidor" />
+                                <Switch Grid.Row="0" Grid.Column="1" x:Name="ConfigSincAuto" OnColor="#28a745" Toggled="ConfigSincAuto_Toggled" />
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                    <Grid>
+                        <StackLayout Padding="10,10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" Text="Sincronización Manual" Margin="0,25,0,15" />
+                                <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="Para esta acción requiere conección a Internet." FontFamily="{StaticResource FontAwesome}" />
+                                <Button x:Name="ConfigSincManual" Grid.Row="2" Grid.Column="0" Text="&#xf093; Sincronizar con servidor" BorderRadius="20" TextColor="White" BackgroundColor="#28a745" FontFamily="{StaticResource FontAwesome}" Clicked="Sincronizar_Manual"  />
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                    <Grid>
+                        <StackLayout Padding="10,10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" Text="Descargar Datos del Servidor" Margin="0,50,0,15" />
+                                <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="Esta acción es recomendada la primera vez que inicia sesión en un dispositivo nuevo.&#10;Atención: La información almacenada en este dispositivo será sustituida por la guardada en el servidor." FontFamily="{StaticResource FontAwesome}" />
+                                <Button x:Name="ConfigDescargarDataServidor" Grid.Row="2" Grid.Column="0" Text="&#xf0c2; Actualizar Aplicación" BorderRadius="20" TextColor="White" BackgroundColor="#007bff" FontFamily="{StaticResource FontAwesome}" Clicked="DescargarServidor_Data" Margin="0,15,0,30"  />
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                    <Grid>
+                        <StackLayout Padding="10,10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" Text="Desactivar Dispositivo" Margin="0,50,0,15" />
+                                <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="Para esta opción requiere conección a Internet y verificar su contraseña.&#10;Al desactivar su dispositivo podrá iniciar sesión en uno nuevo. Si 2 o más dispositivos se encuentran simultáneamente usando la misma sesión, la información puede verse corrompida o con errores graves; así que, para su seguridad y mantener la integridad de su información, es recomendable desactivar este dispositivo para comenzar a utilizar otro, o si desea desinstalar la aplicación." FontFamily="{StaticResource FontAwesome}" />
+                                <Entry x:Name="ConfigPassDesactivar" Grid.Row="2" Grid.Column="0" IsPassword="True" Placeholder="Escriba su contraseña" PlaceholderColor="DarkGray" TextColor="#00695c" Margin="0,10,0,15" />
+                                <Button Grid.Row="3" Grid.Column="0" Text="&#xf011; Desactivar Dispositivo" BorderRadius="20" TextColor="White" BackgroundColor="#dc3545" FontFamily="{StaticResource FontAwesome}" Clicked="Desactivar_Dispositivo" Margin="0,10,0,15" />
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+        </ContentPage.Content>
+    </ContentPage>
+    <ContentPage x:Name="ConfigAgenteTab" Title="Agente" Icon="tab_confusericono.png">
+        <ContentPage.Content>
+            <ScrollView>
+                <StackLayout>
+                    <Grid>
+                        <StackLayout Padding="10,10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="1" FontSize="20" FontAttributes="Bold" Text="Datos del Agente" Grid.ColumnSpan="2" Margin="0,0,0,15" />
+                                <Label Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf2bb;" FontFamily="{StaticResource FontAwesome}" />
+                                <Entry x:Name="ConfigNomAgente" Grid.Row="1" Grid.Column="1" Placeholder="Nombre de Agente" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="2" />
+                                <Label Grid.Row="2" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf1fa;" FontFamily="{StaticResource FontAwesome}" />
+                                <Entry x:Name="ConfigEmailAgente" Grid.Row="2" Grid.Column="1" Placeholder="Correo Electronico" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="2" />
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                    <Grid>
+                        <StackLayout Padding="10,10">
+                            <Grid>
+                                <Button Text="&#xf0c7; Guardar Info. Agente" BorderRadius="20" TextColor="White" BackgroundColor="#17a2b8" FontFamily="{StaticResource FontAwesome}" Clicked="Guardar_ConfInfoAgente" />
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                    <Grid>
+                        <StackLayout Padding="10,10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="1" FontSize="20" FontAttributes="Bold" Text="Cambiar Contraseña" Grid.ColumnSpan="2" Margin="0,20,0,15" />
+                                <Label Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf023;" FontFamily="{StaticResource FontAwesome}" />
+                                <Entry x:Name="ConfigAntiguaPass" Grid.Row="1" Grid.Column="1" Placeholder="Antigua Contraseña" IsPassword="True" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" />
+                                <Label Grid.Row="2" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf09c;" FontFamily="{StaticResource FontAwesome}" />
+                                <Entry x:Name="ConfigNuevaPass" Grid.Row="2" Grid.Column="1" Placeholder="Nueva Contraseña" IsPassword="True" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" />
+                                <Label Grid.Row="3" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf09c;" FontFamily="{StaticResource FontAwesome}" />
+                                <Entry x:Name="ConfigConfirmarPass" Grid.Row="3" Grid.Column="1" Placeholder="Confirmar Contraseña" IsPassword="True" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" />
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                    <Grid>
+                        <StackLayout Padding="10,10">
+                            <Grid>
+                                <Button Text="&#xf0c7; Cambiar Contraseña" BorderRadius="20" TextColor="White" BackgroundColor="#ffc111" FontFamily="{StaticResource FontAwesome}" Clicked="Cambiar_Password" />
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                    <Grid>
+                        <StackLayout Padding="10,10">
+                            <Grid>
+                                <Button Grid.Row="1" Grid.Column="0" Text="&#xf15b; Manual de Usuario" BorderRadius="20" TextColor="White" BackgroundColor="#343a40" FontFamily="{StaticResource FontAwesome}" Clicked="Abrir_ManualUsuario" Margin="0,15,0,10" />
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                    <Grid>
+                        <StackLayout Padding="10,10">
+                            <Grid>
+                                <Button Grid.Row="1" Grid.Column="0" Text="&#xf011; Cerrar Sesión" BorderRadius="20" TextColor="White" BackgroundColor="#dc3545" FontFamily="{StaticResource FontAwesome}" Clicked="Cerrar_Sesion" Margin="0,15,0,15" />
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+        </ContentPage.Content>
+    </ContentPage>
+    <ContentPage x:Name="ConfigOtrosTab" Title="Otros" Icon="tab_confotrosicono.png">
+        <ContentPage.Content>
+            <ScrollView>
+                <StackLayout>
+                    <Grid>
+                        <StackLayout Padding="10,10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf0d6; Dollar Crédito:" FontFamily="{StaticResource FontAwesome}" />
+                                <Entry x:Name="ConfigCreditoDLL" Grid.Row="0" Grid.Column="1" Placeholder="Dollar Crédito" PlaceholderColor="DarkGray" TextColor="#00695c" Keyboard="Numeric" />
+                                <Label Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf0d6; Dollar Contado:" FontFamily="{StaticResource FontAwesome}" />
+                                <Entry x:Name="ConfigContadoDLL" Grid.Row="1" Grid.Column="1" Placeholder="Dollar Contado" PlaceholderColor="DarkGray" TextColor="#00695c" Keyboard="Numeric" />
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                    <Grid>
+                        <StackLayout Padding="10,15,10,10">
+                            <Grid>
+                                <Button Text="&#xf0c7; Guardar Información" BorderRadius="20" TextColor="White" BackgroundColor="#28a745" FontFamily="{StaticResource FontAwesome}" Clicked="Guardar_OtrosParams" />
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+        </ContentPage.Content>
+    </ContentPage>
+</TabbedPage>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1020148379195",
+    "firebase_url": "https://agroventasv1-1fc6a.firebaseio.com",
+    "project_id": "agroventasv1-1fc6a",
+    "storage_bucket": "agroventasv1-1fc6a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020148379195:android:103012b599ab0da574f61e",
+        "android_client_info": {
+          "package_name": "com.trujis.agroventas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020148379195-o8re1695ouek3k6e4pcevelgu1ggtbds.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdZdUtWc0jirVfeyXiOe8vxWpC42VY5Xc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020148379195-o8re1695ouek3k6e4pcevelgu1ggtbds.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

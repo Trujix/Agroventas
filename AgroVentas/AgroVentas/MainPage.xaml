@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AgroVentas"
+             x:Class="AgroVentas.MainPage">
+    <Grid>
+        <Image Source="fondologin.jpg" Aspect="AspectFill"></Image>
+        <BoxView Color="#00695c" Opacity="0.7"></BoxView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image Source="icono.png" WidthRequest="100" HeightRequest="100" Margin="0,50,0,30"></Image>
+            <StackLayout Grid.Row="1" Padding="30,20">
+                <Entry x:Name="UsuarioTxt" Placeholder="Usuario..." PlaceholderColor="White" TextColor="White"></Entry>
+                <Entry x:Name="PasswordTxt" Placeholder="Contraseña..." PlaceholderColor="White" IsPassword="True" TextColor="White"></Entry>
+                <Button Text="Iniciar Sesión" BorderRadius="20" TextColor="White" BackgroundColor="#28a745" Clicked="Iniciar_Sesion"></Button>
+                <StackLayout HorizontalOptions="Center" Padding="0,40,0,0">
+                    <Button Text="¿Olvidó su contraseña?" BorderRadius="20" TextColor="White" BackgroundColor="Transparent" Clicked="Recuperar_Password"></Button>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

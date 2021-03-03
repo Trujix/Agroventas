@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:dotMorten.Xamarin.Forms;assembly=dotMorten.Xamarin.Forms.AutoSuggestBox"
+             x:Class="AgroVentas.Vistas.CatalogoClientes">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.ColumnSpan="3" FontSize="20" FontAttributes="Bold" Text="Ajuste de Clientes" />
+                            <forms:AutoSuggestBox x:Name="ClienteBusq" Grid.Row="1" Grid.ColumnSpan="3" PlaceholderText="- Seleccione Cliente -" TextChanged="ClienteBusq_TextChanged" SuggestionChosen="ClienteBusq_SuggestionChosen" />
+                            <Picker IsVisible="False" x:Name="ClienteFormLista" Title="- Seleccione Cliente -" Grid.Row="2" Grid.ColumnSpan="3" ItemDisplayBinding="{Binding RazonSocial}" SelectedItem="{Binding Id}" Margin="0,10,0,10" SelectedIndexChanged="ClienteFormLista_SelectedIndexChanged" />
+                            <Button Grid.Row="3" Grid.Column="0" Text="&#xf067; Nuevo" BorderRadius="20" TextColor="White" BackgroundColor="#007bff" FontFamily="{StaticResource FontAwesome}" Clicked="Nuevo_Cliente" />
+                            <Button Grid.Row="3" Grid.Column="1" Text="&#xf044; Editar" BorderRadius="20" TextColor="White" BackgroundColor="#ffc107" FontFamily="{StaticResource FontAwesome}" Clicked="Editar_Cliente" />
+                            <Button Grid.Row="3" Grid.Column="2" Text="&#xf1f8; Borrar" BorderRadius="20" TextColor="White" BackgroundColor="#dc3545" FontFamily="{StaticResource FontAwesome}" Clicked="Borrar_Cliente" />
+                            <Button Grid.Row="4" Grid.ColumnSpan="3" Text="&#xf02f; Generar Ficha" BorderRadius="20" TextColor="White" BackgroundColor="#343a40" FontFamily="{StaticResource FontAwesome}" Margin="0,5,0,5" Clicked="Generar_FichaCliente" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <BoxView VerticalOptions="FillAndExpand" Color="DarkGray" HeightRequest="1" Margin="0,10,0,10"></BoxView>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" Text="Ficha de Cliente" Margin="0,5,0,0" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf2bb;" FontFamily="{StaticResource FontAwesome}" />
+                            <forms:AutoSuggestBox x:Name="ClienteFormRazSoc" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" PlaceholderText="Razón Social" PlaceholderTextColor="DarkGray" TextColor="#00695c" TextChanged="ClienteFormRazSoc_TextChanged" SuggestionChosen="ClienteFormRazSoc_SuggestionChosen" />
+                            <!-- <Entry x:Name="ClienteFormRazSoc" Grid.Row="1" Grid.Column="1" Placeholder="Razón Social" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" /> -->
+                            <Label Grid.Row="2" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf029;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="ClienteFormRFC" Grid.Row="2" Grid.Column="1" Placeholder="RFC" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" MaxLength="13" />
+                            <Label Grid.Row="3" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf015;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="ClienteFormCalle" Grid.Row="3" Grid.Column="1" Placeholder="Calle" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" />
+                            <Label Grid.Row="4" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf292;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="ClienteFormNumExt" Grid.Row="4" Grid.Column="1" Placeholder="Numero Ext" PlaceholderColor="DarkGray" TextColor="#00695c" />
+                            <Label Grid.Row="4" Grid.Column="2" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf292;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="ClienteFormNumInt" Grid.Row="4" Grid.Column="3" Placeholder="Numero Int" PlaceholderColor="DarkGray" TextColor="#00695c" />
+                            <Label Grid.Row="5" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf2b9;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="ClienteFormColonia" Grid.Row="5" Grid.Column="1" Placeholder="Colonia" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" />
+                            <Label Grid.Row="6" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf279;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="ClienteFormLocalidad" Grid.Row="6" Grid.Column="1" Placeholder="Localidad" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" />
+                            <Label Grid.Row="7" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf041;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="ClienteFormMunicip" Grid.Row="7" Grid.Column="1" Placeholder="Municipio" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" />
+                            <Label Grid.Row="8" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf041;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="ClienteFormEstado" Grid.Row="8" Grid.Column="1" Placeholder="Estado" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" />
+                            <Label Grid.Row="9" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf0ac;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="ClienteFormPais" Grid.Row="9" Grid.Column="1" Placeholder="País" PlaceholderColor="DarkGray" TextColor="#00695c" />
+                            <Label Grid.Row="9" Grid.Column="2" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf0e0;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="ClienteFormCP" Grid.Row="9" Grid.Column="3" Placeholder="C.P." PlaceholderColor="DarkGray" TextColor="#00695c" Keyboard="Numeric" MaxLength="5" />
+                            <Label Grid.Row="10" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf007;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="ClienteFormNomCont" Grid.Row="10" Grid.Column="1" Placeholder="Nombre Contacto" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" />
+                            <Label Grid.Row="11" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf095;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="ClienteFormTelef" Grid.Row="11" Grid.Column="1" Placeholder="Teléfono" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" Keyboard="Numeric" MaxLength="10" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,20,10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" Text="Email(s) del Cliente" />
+                            <Button Grid.Row="0" Grid.Column="1" Text="&#xf1f8;" WidthRequest="40" HeightRequest="40" BorderRadius="20" TextColor="White" BackgroundColor="#dc3545" FontFamily="{StaticResource FontAwesome}" Clicked="Limpiar_MailCliente" />
+                            <Button Grid.Row="0" Grid.Column="2" Text="&#xf055;" WidthRequest="40" HeightRequest="40" BorderRadius="20" TextColor="White" BackgroundColor="#6c757d" FontFamily="{StaticResource FontAwesome}" Clicked="AgregarNuevo_MailCliente" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid x:Name="CorreosClienteAltaGrid"></Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf15b;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="ClienteFormUsoCFDI" Grid.Row="0" Grid.Column="1" Placeholder="Uso de CFDI" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" />
+                            <Label Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf09d;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="ClienteFormMetPago" Grid.Row="1" Grid.Column="1" Placeholder="Método Pago" PlaceholderColor="DarkGray" TextColor="#00695c" />
+                            <Label Grid.Row="1" Grid.Column="2" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf0d6;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="ClienteFormFormPago" Grid.Row="1" Grid.Column="3" Placeholder="Forma Pago" PlaceholderColor="DarkGray" TextColor="#00695c" />
+                            <Label Grid.Row="2" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf133;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="ClienteFormDiasCred" Grid.Row="2" Grid.Column="1" Placeholder="Días Crédito" PlaceholderColor="DarkGray" TextColor="#00695c" Keyboard="Numeric" />
+                            <Label Grid.Row="2" Grid.Column="2" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf155;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="ClienteFormLinCred" Grid.Row="2" Grid.Column="3" Placeholder="Línea Crédito" PlaceholderColor="DarkGray" TextColor="#00695c" Keyboard="Numeric" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,20,10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" Text="Campo(s) del Cliente" />
+                            <Button Grid.Row="0" Grid.Column="1" Text="&#xf1f8;" WidthRequest="40" HeightRequest="40" BorderRadius="20" TextColor="White" BackgroundColor="#dc3545" FontFamily="{StaticResource FontAwesome}" Clicked="Limpiar_CamposCliente" />
+                            <Button Grid.Row="0" Grid.Column="2" Text="&#xf055;" WidthRequest="40" HeightRequest="40" BorderRadius="20" TextColor="White" BackgroundColor="#6c757d" FontFamily="{StaticResource FontAwesome}" Clicked="NuevoCampo_Cliente" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid x:Name="CamposClienteAltaGrid"></Grid>
+                    </StackLayout>
+                </Grid>
+                <BoxView VerticalOptions="FillAndExpand" Color="DarkGray" HeightRequest="1" Margin="0,20,0,20"></BoxView>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Row="0" Grid.Column="0" Text="&#xf0c7; Guardar Cliente" BorderRadius="20" TextColor="White" BackgroundColor="#28a745" FontFamily="{StaticResource FontAwesome}" Margin="0,30,0,30" Clicked="Guardar_Cliente" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

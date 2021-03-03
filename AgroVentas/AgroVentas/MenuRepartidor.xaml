@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgroVentas.MenuRepartidor" 
+            BarBackgroundColor="#39804F" BarTextColor="White">
+    <ContentPage Title="Repartos">
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Row="0" Grid.Column="0" Text="&#xf0c9; Ver Solicitudes" BorderRadius="20" TextColor="White" BackgroundColor="#343a40" FontFamily="{StaticResource FontAwesome}" Clicked="Obtener_ListaRepartos" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout x:Name="RepartosListaForm"></StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage Title="Ajustes">
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="1" FontSize="20" FontAttributes="Bold" Text="Datos del Repartidor" Grid.ColumnSpan="2" Margin="0,0,0,15" />
+                            <Label Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf2bb;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="NombreRepartidor" Grid.Row="1" Grid.Column="1" Placeholder="Nombre de Repartidor" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" />
+                            <Label Grid.Row="2" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf1fa;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="EmailRepartidor" Grid.Row="2" Grid.Column="1" Placeholder="Correo Electronico" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Row="0" Grid.Column="0" Text="&#xf0c7; Guardar Info. Repartidor" BorderRadius="20" TextColor="White" BackgroundColor="#17a2b8" FontFamily="{StaticResource FontAwesome}" Clicked="Guardar_InfoRepartidor" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="1" FontSize="20" FontAttributes="Bold" Text="Cambiar Contraseña" Grid.ColumnSpan="2" Margin="0,20,0,15" />
+                            <Label Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf023;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="RepAntiguaPass" Grid.Row="1" Grid.Column="1" Placeholder="Antigua Contraseña" IsPassword="True" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" />
+                            <Label Grid.Row="2" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf09c;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="RepNuevaPass" Grid.Row="2" Grid.Column="1" Placeholder="Nueva Contraseña" IsPassword="True" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" />
+                            <Label Grid.Row="3" Grid.Column="0" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="&#xf09c;" FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="RepConfirmarPass" Grid.Row="3" Grid.Column="1" Placeholder="Confirmar Contraseña" IsPassword="True" PlaceholderColor="DarkGray" TextColor="#00695c" Grid.ColumnSpan="3" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Row="0" Grid.Column="0" Text="&#xf0c7; Cambiar Contraseña" BorderRadius="20" TextColor="White" BackgroundColor="#ffc111" FontFamily="{StaticResource FontAwesome}" Clicked="Cambiar_PasswordRep" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Button Grid.Row="1" Grid.Column="0" Text="&#xf15b; Manual de Usuario" BorderRadius="20" TextColor="White" BackgroundColor="#343a40" FontFamily="{StaticResource FontAwesome}" Clicked="Abrir_ManualUsuario" Margin="0,15,0,15" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Row="0" Grid.Column="0" Text="&#xf011; Cerrar Sesión" BorderRadius="20" TextColor="White" BackgroundColor="#dc3545" FontFamily="{StaticResource FontAwesome}" Clicked="Cerrar_SesionRep" Margin="0,10,0,15" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid>
+                    <StackLayout Padding="10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontAttributes="Bold" Text="Desactivar Dispositivo" Margin="0,50,0,15" />
+                            <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="Para esta opción requiere conección a Internet y verificar su contraseña.&#10;Al desactivar su dispositivo podrá iniciar sesión en uno nuevo. Si 2 o más dispositivos se encuentran simultáneamente usando la misma sesión, la información puede verse corrompida o con errores graves; así que, para su seguridad y mantener la integridad de su información, es recomendable desactivar este dispositivo para comenzar a utilizar otro, o si desea desinstalar la aplicación." FontFamily="{StaticResource FontAwesome}" />
+                            <Entry x:Name="RepPassDesactivar" Grid.Row="2" Grid.Column="0" IsPassword="True" Placeholder="Escriba su contraseña" PlaceholderColor="DarkGray" TextColor="#00695c" Margin="0,10,0,15" />
+                            <Button Grid.Row="3" Grid.Column="0" Text="&#xf011; Desactivar Dispositivo" BorderRadius="20" TextColor="White" BackgroundColor="#343a40" FontFamily="{StaticResource FontAwesome}" Clicked="Desactivar_DispositivoRep" Margin="0,10,0,15" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+</TabbedPage>

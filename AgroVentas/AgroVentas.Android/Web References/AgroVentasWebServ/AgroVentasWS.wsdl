@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://trujillo-lia.org" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://trujillo-lia.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://trujillo-lia.org">
+      <s:element name="LoginAccion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="logininfo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginAccionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginAccionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProcesarData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dataapp" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idusuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProcesarDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProcesarDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UsuarioDataBD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idusuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UsuarioDataBDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UsuarioDataBDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerPedidosLista">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pedidoinfo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerPedidosListaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerPedidosListaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperarPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuarioparams" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperarPasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecuperarPasswordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearClienteFichaPDF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="clientesinfo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="correos" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idusuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearClienteFichaPDFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CrearClienteFichaPDFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearOrdenPedidoPDF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pedidoinfo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idusuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearOrdenPedidoPDFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CrearOrdenPedidoPDFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerOrdenPedidoDoc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idusuario" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipodocumento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="folioadicional" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerOrdenPedidoDocResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerOrdenPedidoDocResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearCotizacionPDF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idusuario" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="cotizaciondata" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearCotizacionPDFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CrearCotizacionPDFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerManualesUrl">
+        <s:complexType />
+      </s:element>
+      <s:element name="ObtenerManualesUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerManualesUrlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AsignarOPRepartidor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idusuario" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idordenpedido" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="repartidor" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AsignarOPRepartidorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AsignarOPRepartidorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CambiarEstatusOP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idusuario" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idordenpedido" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="estatus" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CambiarEstatusOPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CambiarEstatusOPResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerIDRepartidorOP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idusuario" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idordenpedido" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerIDRepartidorOPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ObtenerIDRepartidorOPResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EntregarReporte">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idusuario" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="dataestructura" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="reporte" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EntregarReporteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EntregarReporteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LoginAccionSoapIn">
+    <wsdl:part name="parameters" element="tns:LoginAccion" />
+  </wsdl:message>
+  <wsdl:message name="LoginAccionSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginAccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProcesarDataSoapIn">
+    <wsdl:part name="parameters" element="tns:ProcesarData" />
+  </wsdl:message>
+  <wsdl:message name="ProcesarDataSoapOut">
+    <wsdl:part name="parameters" element="tns:ProcesarDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="UsuarioDataBDSoapIn">
+    <wsdl:part name="parameters" element="tns:UsuarioDataBD" />
+  </wsdl:message>
+  <wsdl:message name="UsuarioDataBDSoapOut">
+    <wsdl:part name="parameters" element="tns:UsuarioDataBDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerPedidosListaSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerPedidosLista" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerPedidosListaSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerPedidosListaResponse" />
+  </wsdl:message>
+  <wsdl:message name="RecuperarPasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:RecuperarPassword" />
+  </wsdl:message>
+  <wsdl:message name="RecuperarPasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:RecuperarPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="CrearClienteFichaPDFSoapIn">
+    <wsdl:part name="parameters" element="tns:CrearClienteFichaPDF" />
+  </wsdl:message>
+  <wsdl:message name="CrearClienteFichaPDFSoapOut">
+    <wsdl:part name="parameters" element="tns:CrearClienteFichaPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="CrearOrdenPedidoPDFSoapIn">
+    <wsdl:part name="parameters" element="tns:CrearOrdenPedidoPDF" />
+  </wsdl:message>
+  <wsdl:message name="CrearOrdenPedidoPDFSoapOut">
+    <wsdl:part name="parameters" element="tns:CrearOrdenPedidoPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerOrdenPedidoDocSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerOrdenPedidoDoc" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerOrdenPedidoDocSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerOrdenPedidoDocResponse" />
+  </wsdl:message>
+  <wsdl:message name="CrearCotizacionPDFSoapIn">
+    <wsdl:part name="parameters" element="tns:CrearCotizacionPDF" />
+  </wsdl:message>
+  <wsdl:message name="CrearCotizacionPDFSoapOut">
+    <wsdl:part name="parameters" element="tns:CrearCotizacionPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerManualesUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerManualesUrl" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerManualesUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerManualesUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="AsignarOPRepartidorSoapIn">
+    <wsdl:part name="parameters" element="tns:AsignarOPRepartidor" />
+  </wsdl:message>
+  <wsdl:message name="AsignarOPRepartidorSoapOut">
+    <wsdl:part name="parameters" element="tns:AsignarOPRepartidorResponse" />
+  </wsdl:message>
+  <wsdl:message name="CambiarEstatusOPSoapIn">
+    <wsdl:part name="parameters" element="tns:CambiarEstatusOP" />
+  </wsdl:message>
+  <wsdl:message name="CambiarEstatusOPSoapOut">
+    <wsdl:part name="parameters" element="tns:CambiarEstatusOPResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerIDRepartidorOPSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerIDRepartidorOP" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerIDRepartidorOPSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerIDRepartidorOPResponse" />
+  </wsdl:message>
+  <wsdl:message name="EntregarReporteSoapIn">
+    <wsdl:part name="parameters" element="tns:EntregarReporte" />
+  </wsdl:message>
+  <wsdl:message name="EntregarReporteSoapOut">
+    <wsdl:part name="parameters" element="tns:EntregarReporteResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AgroVentasWSSoap">
+    <wsdl:operation name="LoginAccion">
+      <wsdl:input message="tns:LoginAccionSoapIn" />
+      <wsdl:output message="tns:LoginAccionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcesarData">
+      <wsdl:input message="tns:ProcesarDataSoapIn" />
+      <wsdl:output message="tns:ProcesarDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioDataBD">
+      <wsdl:input message="tns:UsuarioDataBDSoapIn" />
+      <wsdl:output message="tns:UsuarioDataBDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPedidosLista">
+      <wsdl:input message="tns:ObtenerPedidosListaSoapIn" />
+      <wsdl:output message="tns:ObtenerPedidosListaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarPassword">
+      <wsdl:input message="tns:RecuperarPasswordSoapIn" />
+      <wsdl:output message="tns:RecuperarPasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearClienteFichaPDF">
+      <wsdl:input message="tns:CrearClienteFichaPDFSoapIn" />
+      <wsdl:output message="tns:CrearClienteFichaPDFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearOrdenPedidoPDF">
+      <wsdl:input message="tns:CrearOrdenPedidoPDFSoapIn" />
+      <wsdl:output message="tns:CrearOrdenPedidoPDFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerOrdenPedidoDoc">
+      <wsdl:input message="tns:ObtenerOrdenPedidoDocSoapIn" />
+      <wsdl:output message="tns:ObtenerOrdenPedidoDocSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearCotizacionPDF">
+      <wsdl:input message="tns:CrearCotizacionPDFSoapIn" />
+      <wsdl:output message="tns:CrearCotizacionPDFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerManualesUrl">
+      <wsdl:input message="tns:ObtenerManualesUrlSoapIn" />
+      <wsdl:output message="tns:ObtenerManualesUrlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AsignarOPRepartidor">
+      <wsdl:input message="tns:AsignarOPRepartidorSoapIn" />
+      <wsdl:output message="tns:AsignarOPRepartidorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CambiarEstatusOP">
+      <wsdl:input message="tns:CambiarEstatusOPSoapIn" />
+      <wsdl:output message="tns:CambiarEstatusOPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerIDRepartidorOP">
+      <wsdl:input message="tns:ObtenerIDRepartidorOPSoapIn" />
+      <wsdl:output message="tns:ObtenerIDRepartidorOPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EntregarReporte">
+      <wsdl:input message="tns:EntregarReporteSoapIn" />
+      <wsdl:output message="tns:EntregarReporteSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AgroVentasWSSoap" type="tns:AgroVentasWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LoginAccion">
+      <soap:operation soapAction="http://trujillo-lia.org/LoginAccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcesarData">
+      <soap:operation soapAction="http://trujillo-lia.org/ProcesarData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioDataBD">
+      <soap:operation soapAction="http://trujillo-lia.org/UsuarioDataBD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPedidosLista">
+      <soap:operation soapAction="http://trujillo-lia.org/ObtenerPedidosLista" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarPassword">
+      <soap:operation soapAction="http://trujillo-lia.org/RecuperarPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearClienteFichaPDF">
+      <soap:operation soapAction="http://trujillo-lia.org/CrearClienteFichaPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearOrdenPedidoPDF">
+      <soap:operation soapAction="http://trujillo-lia.org/CrearOrdenPedidoPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerOrdenPedidoDoc">
+      <soap:operation soapAction="http://trujillo-lia.org/ObtenerOrdenPedidoDoc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearCotizacionPDF">
+      <soap:operation soapAction="http://trujillo-lia.org/CrearCotizacionPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerManualesUrl">
+      <soap:operation soapAction="http://trujillo-lia.org/ObtenerManualesUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsignarOPRepartidor">
+      <soap:operation soapAction="http://trujillo-lia.org/AsignarOPRepartidor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambiarEstatusOP">
+      <soap:operation soapAction="http://trujillo-lia.org/CambiarEstatusOP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerIDRepartidorOP">
+      <soap:operation soapAction="http://trujillo-lia.org/ObtenerIDRepartidorOP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EntregarReporte">
+      <soap:operation soapAction="http://trujillo-lia.org/EntregarReporte" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AgroVentasWSSoap12" type="tns:AgroVentasWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LoginAccion">
+      <soap12:operation soapAction="http://trujillo-lia.org/LoginAccion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcesarData">
+      <soap12:operation soapAction="http://trujillo-lia.org/ProcesarData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioDataBD">
+      <soap12:operation soapAction="http://trujillo-lia.org/UsuarioDataBD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPedidosLista">
+      <soap12:operation soapAction="http://trujillo-lia.org/ObtenerPedidosLista" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarPassword">
+      <soap12:operation soapAction="http://trujillo-lia.org/RecuperarPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearClienteFichaPDF">
+      <soap12:operation soapAction="http://trujillo-lia.org/CrearClienteFichaPDF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearOrdenPedidoPDF">
+      <soap12:operation soapAction="http://trujillo-lia.org/CrearOrdenPedidoPDF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerOrdenPedidoDoc">
+      <soap12:operation soapAction="http://trujillo-lia.org/ObtenerOrdenPedidoDoc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearCotizacionPDF">
+      <soap12:operation soapAction="http://trujillo-lia.org/CrearCotizacionPDF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerManualesUrl">
+      <soap12:operation soapAction="http://trujillo-lia.org/ObtenerManualesUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsignarOPRepartidor">
+      <soap12:operation soapAction="http://trujillo-lia.org/AsignarOPRepartidor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambiarEstatusOP">
+      <soap12:operation soapAction="http://trujillo-lia.org/CambiarEstatusOP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerIDRepartidorOP">
+      <soap12:operation soapAction="http://trujillo-lia.org/ObtenerIDRepartidorOP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EntregarReporte">
+      <soap12:operation soapAction="http://trujillo-lia.org/EntregarReporte" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AgroVentasWS">
+    <wsdl:port name="AgroVentasWSSoap" binding="tns:AgroVentasWSSoap">
+      <soap:address location="http://www.agroventas2236.com/AgroVentasWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AgroVentasWSSoap12" binding="tns:AgroVentasWSSoap12">
+      <soap12:address location="http://www.agroventas2236.com/AgroVentasWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
